@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -82,12 +83,12 @@ WSGI_APPLICATION = 'StudentHelper.wsgi.application'
         
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # Use 'mongodb' as the database engine
-        'NAME': 'Student-HelperDB',  # Specify your MongoDB database name
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',  # Use 'mongodb' as the database engine
+#         'NAME': 'Student-HelperDB',  # Specify your MongoDB database name
+#     }
+# }
 
 
 # Password validation
