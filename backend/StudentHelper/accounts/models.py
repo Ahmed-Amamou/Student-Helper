@@ -1,8 +1,6 @@
-from django.db import models
-import os,pymongo 
 from pymongo.errors import PyMongoError
 from DBconnection import db
-
+import bcrypt
 # # Create your models here.
 # #User is a student who can register in the system and use its services, mongodb is used to store the data of the users
 # #The user has the following attributes: firstName, lastName, email, password, specialization, university, year, status
@@ -22,12 +20,35 @@ from DBconnection import db
     
 
 users_collection = db['Users']
-users_collection.insert_one({'firstName':'Ahmed',
+#Simulation example coming from the frontend
+
+user1 = {'firstName':'Ahmed',
                              'lastName':'Amamou',
                              'email':'ahmedamamou@gmail.com',
                              'password':'123456',
                              'specialization':'Computer Science',
                              'university':'University of Sfax',
-                             'year':'Second',
-                             'status':False})
+                             'year':'Second'}
+user1['password'] = bcrypt.hashpw(user1['password'].encode('utf-8'), bcrypt.gensalt())
+user1['status'] = False
+try:
+    users_collection.insert_one(user1)
+    print('User added successfully')
+except PyMongoError as e:
+    print('Failed to add user:', e)
+    
 
+
+# users_collection.insert_one({'firstName':'Ahmed',
+#                              'lastName':'Amamou',
+#                              'email':'ahmedamamou@gmail.com',
+#                              'password':'123456',
+#                              'specialization':'Computer Science',
+#                              'university':'University of Sfax',
+#                              'year':'Second',
+#                              'status':False})
+
+
+
+
+    

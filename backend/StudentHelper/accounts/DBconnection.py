@@ -15,6 +15,4 @@ db = client['Student-HelperDB']  # Replace 'your_database_name' with the name of
 users_collection = db['Users']
 
 #test connection
-#getnumber of users
-print(users_collection.count_documents({})) 
 
